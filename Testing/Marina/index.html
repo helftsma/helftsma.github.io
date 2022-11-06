@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Upload Files</title>
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
 </head>
 <body>
-  <div>
-    <label for="file-input">Input .py file:</label>
-    <span id="file-input-button"></span>
-    <input type="file" id="file-input" accept=".py">
-  </div>
+    <label for="upload-button">Input Python file:</label>
+    <input type="file" id="upload-button"/>
+    <script src="processUserFile.js"></script>
+    <div><py-script id="user-code">print('Hello, World!') </py-script></div>
 
- <script src="processUserFile.js"></script>
 </body>
 </html>
