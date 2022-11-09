@@ -1,3 +1,4 @@
+
 // Global variable to store the py-script DIV
 let py_div;
 let py_output;
@@ -14,6 +15,10 @@ function run_python(py_code) {
         ${py_code}
         </py-script>
         `;
+
+        // let html_tag = document.getElementsByTagName("py-script")[0].innerHTML
+        //
+        // html_tag += ${py_code}
 
         // Create the DIV to attach the py-script tag
         let div = document.createElement("div");
@@ -36,6 +41,7 @@ document.getElementById('upload-button').addEventListener('change', function(e) 
   let file = document.getElementById('upload-button').files[0];
 
   (async () => {
+      // Convert .py file into string
     const fileContent = await file.text();
 
     console.log(fileContent);
@@ -46,6 +52,17 @@ document.getElementById('upload-button').addEventListener('change', function(e) 
     document.body.appendChild(py_output);
 
     run_python(fileContent);
+
+    await fetch('/index', {
+
+        // Declare what type of data we're sending
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        // Specify the method
+        method: 'POST',
+        body: fileContent
+    })
 
   })();
 });
