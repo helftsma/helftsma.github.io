@@ -1,0 +1,17 @@
+{
+  "curve type": ["force-segment-header.settings.style"],
+  "position index": [
+    "force-scan-map.header.position-index",
+    "force-scan-series.header.position-index",
+    "quantitative-imaging-map.header.position-index",
+    "quantitative-imaging-series.header.position-index"
+  ],
+  "position x [m]": ["force-segment-header.environment.xy-scanner-position-map.xy-scanner.motorstage.position.x"],
+  "position y [m]": ["force-segment-header.environment.xy-scanner-position-map.xy-scanner.motorstage.position.y"],
+  "segment duration": ["force-segment-header.settings.segment-settings.duration"],
+  "segment pause type": ["force-segment-header.settings.segment-settings.type"],
+  "setpoint [V]": ["force-segment-header.settings.segment-settings.setpoint"],
+  "time stamp": ["force-segment-header.time-stamp"],
+  "z end": ["force-segment-header.settings.segment-settings.z-end"],
+  "z start": ["force-segment-header.settings.segment-settings.z-start"]
+}
