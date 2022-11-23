@@ -1,0 +1,23 @@
+   def load(self):
+        f = open(self.filename)
+        stopLine = 'Time (s)'
+        numeric = False
+        data = []
+        for riga in f:
+            if numeric is False:
+                if riga[0:len(stopLine)] == stopLine:
+                    numeric = True
+            else:
+                line = riga.strip().replace(',', '.').split('\t')
+                # Time (s)	Load (uN)	Indentation (nm)	Cantilever (nm)	Piezo (nm)	Auxiliary
+                # skip 2 = indentation and #5 auxiliary if present
+                data.append([float(line[0]), float(line[1]),
+                             float(line[3]), float(line[4]),float(line[2])])
+        f.close()
+        data = np.array(data)
+
+        self.data['time'] = data[:, 0]
+        self.data['force'] = data[:, 1]*1000.0
+        self.data['deflection'] = data[:, 2]
+        self.data['z'] = data[:, 3]
+        self.data['indentation'] = data[:, 4]
