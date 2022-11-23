@@ -2,11 +2,19 @@
 import numpy as np
 
 class Filter(): #could be used as superclass
+
+
     #Set here the details of the procedure
     def __init__(self):
         self.name  #Name, please keep it short as it will appear in the combo box of the user interface
         self.desc #Free text
         self.doi #set a DOI of a publication you want/suggest to be cited, empty if no reference
+
+    def setValues(self, values): #setter for window values
+        self.values = values 
+
+    def getValue(self, key):
+        return self.values[key]
 
     def calculate(self, x,y):
         # This function gets the current x and y and returns the filtered version.
