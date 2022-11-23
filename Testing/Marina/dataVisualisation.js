@@ -9,9 +9,21 @@ document.querySelector("#read-button").addEventListener('click', function() {
         // $output.innerText = text
 
         // By lines
-        var lines = text.split('\n');
-        for (var line = 0; line < lines.length; line++) {
-          console.log(lines[line]);
+        let lines = text.split('\n');
+        let reached = false;
+        let data = [];
+        for (let line = 0; line < 50; line++) {
+            if(reached){
+                data.push(lines[line].split("\t"));
+            }
+
+            let words = lines[line].split('');
+            for(let word = 0; word<words.length; word++){
+                if(words.slice(-10).join("").trim() === "Auxiliary") {
+                    reached = true;
+                }
+            }
+
         }
       };
 		reader.readAsText(file);
