@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
 
     <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
-    <script src="main.js" type="text/javascript"></script>
 
     <style>
       .button {
@@ -27,6 +26,7 @@
       }
     </style>
 
+    <!-- Set up the python libraries to be used -->
     <py-env>
         - matplotlib
         - pandas
@@ -35,7 +35,8 @@
     
 </head>
 <body>
-    
+
+    <script src="main.js" type="text/javascript"></script>
     <py-script src="./main.py"></py-script>
     <br />
     <button class="button" id="button" onclick="">Click!</button>
