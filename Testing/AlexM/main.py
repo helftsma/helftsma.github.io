@@ -1,9 +1,15 @@
 
 from js import document
 from pyodide import create_proxy
+import plotly.express as px
+
 
 data = [1, 2, 3
 ]
+
+def plot():
+  fig = px.bar(x=["a", "b", "c"], y=[1, 3, 2])
+  fig.show()
 
 def double_value():
   return data[0]*2
@@ -32,3 +38,4 @@ def setup():
 print_data()
 data = double_value()
 print_data()
+plot()
