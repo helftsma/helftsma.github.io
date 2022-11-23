@@ -1,0 +1,5 @@
+[console_scripts]
+nanite-fit = nanite.cli:fit [CLI]
+nanite-generate-training-set = nanite.cli:generate_training_set [CLI]
+nanite-rate = nanite.cli:rate [CLI]
+nanite-setup-profile = nanite.cli:setup_profile [CLI]
