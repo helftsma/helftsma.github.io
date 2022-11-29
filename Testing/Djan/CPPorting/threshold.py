@@ -1,11 +1,11 @@
 # import the main panels structure, required
-from __skeletonfilter__ import Filter
+from __skeletonCP__ import CP
 # import here your procedure-specific modules, no requirements (numpy as an example)
 import numpy as np
 
 # Create your filter class by extending the main one
 # Additional methods can be created, if required
-class Threshold(Filter):
+class Threshold(CP):
     def __init__(self):
         self.name = "Threshold"
         self.desc = 'Identify the CP by thresholding it'

@@ -2,7 +2,7 @@
 import numpy as np
 
 
-class Filter():  # could be used as superclass
+class CP():  # could be used as superclass
 
     # Set here the details of the procedure
     def __init__(self):

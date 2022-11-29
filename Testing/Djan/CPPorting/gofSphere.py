@@ -1,5 +1,5 @@
 #import the main panels structure, required
-from __skeletonfilter__ import Filter
+from __skeletonCP__ import CP
 #import here your procedure-specific modules, no requirements (numpy as an example)
 import numpy as np
 from scipy.optimize import curve_fit
@@ -8,7 +8,7 @@ from scipy.optimize import curve_fit
 
 # Create your filter class by extending the main one
 # Additional methods can be created, if required
-class GoFSphere(Filter):
+class GoFSphere(CP):
     def __init__(self):
         self.name = "GoF sphere"
         self.desc = 'Computes CP based on the GoF method using the Hertz solution for a spherical indenter'

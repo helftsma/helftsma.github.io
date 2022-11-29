@@ -1,11 +1,11 @@
 # import the main panels structure, required
-from __skeletonfilter__ import Filter
+from __skeletonCP__ import CP
 # import here your procedure-specific modules, no requirements (numpy as an example)
 from scipy.signal import savgol_filter
 
 # Create your filter class by extending the main one
 # Additional methods can be created, if required
-class Step(Filter):
+class Step(CP):
     def __init__(self):
         self.name = "Step"
         self.desc = 'Identify the CP by steps in first derivative'
