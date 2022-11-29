@@ -10,6 +10,7 @@ class SavGolFilter(Filter):
         self.name = "SavGol"
         self.desc = 'Filter the curve with a Savitzky Golay filter; ideal to preserve steps' 
         self.doi = 'https://doi.org/10.1038/s41592-019-0686-2'
+        self.dependance = ['win','order']
 
     def calculate(self, x, y):
         win = self.getValue('win')*1e-9

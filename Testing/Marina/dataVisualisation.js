@@ -11,22 +11,38 @@ document.querySelector("#read-button").addEventListener('click', function() {
         // By lines
         let lines = text.split('\n');
         let reached = false;
-        let data = [];
-        for (let line = 0; line < 50; line++) {
+        let data = {
+            "Time":[],
+            "Load":[],
+            "Indentation":[],
+            "Cantilever":[],
+            "Piezo":[]
+        };
+        let values;
+        for (let line = 0; line < lines.length; line++) {
             if(reached){
-                data.push(lines[line].split("\t"));
+                //ta.push(lines[line].split("\t"));
+                values = lines[line].split("\t");
+                data["Time"].push(values[0]);
+                data["Load"].push(values[1]);
+                data["Indentation"].push(values[2]);
+                data["Cantilever"].push(values[3]);
+                data["Piezo"].push(values[4]);
             }
 
             let words = lines[line].split('');
             for(let word = 0; word<words.length; word++){
+
                 if(words.slice(-10).join("").trim() === "Auxiliary") {
                     reached = true;
                 }
             }
 
         }
+        console.log(data);
       };
 		reader.readAsText(file);
+
 	});
 
 
