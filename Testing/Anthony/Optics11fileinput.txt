@@ -1,0 +1,32 @@
+import numpy as np
+def load(filename):
+    dataDic = {'time': [], 'force': [], 'deflection': [], 'z': []}
+    f = open(filename)
+    stopLine = 'Time (s)'
+    numeric = False
+    data = []
+    for riga in f:
+        if numeric is False:
+            if riga[0:len(stopLine)] == stopLine:
+                numeric = True
+        else:
+            line = riga.strip().replace(',', '.').split('\t')
+            # Time (s)	Load (uN)	Indentation (nm)	Cantilever (nm)	Piezo (nm)	Auxiliary
+            # skip 2 = indentation and #5 auxiliary if present
+            data.append([float(line[0]), float(line[1]),
+                         float(line[3]), float(line[4]),float(line[2])])
+    f.close()
+    data = np.array(data)
+
+    dataDic['time'] = data[:, 0]
+    dataDic['force'] = data[:, 1]*1000.0
+    dataDic['deflection'] = data[:, 2]
+    dataDic['z'] = data[:, 3]
+    dataDic['indentation'] = data[:, 4]
+    print(dataDic["force"])
+    
+def main():
+    load("/kaggle/input/test-data/Sample 1 Indentation_006.txt")
+
+if __name__ == "__main__":
+    main()
