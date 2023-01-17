@@ -18,6 +18,8 @@ import { GraphsComponent } from './graphs/graphs.component';
 import {CardModule} from "primeng/card";
 import {ChartModule} from "primeng/chart";
 import {TooltipModule} from 'primeng/tooltip';
+import {MatSliderModule} from '@angular/material/slider';
+
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import {TooltipModule} from 'primeng/tooltip';
     HttpClientModule,
     CardModule,
     TooltipModule,
-    ChartModule
+    ChartModule, 
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

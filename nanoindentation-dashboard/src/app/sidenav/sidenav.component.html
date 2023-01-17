@@ -13,6 +13,17 @@
                     pTooltip="Upload your .txt file containing your nano-indentation data"
                     tooltipPosition="right"></p-fileUpload>
     </p-accordionTab>
+    <p-accordionTab header="Files - raw">
+      <h4 class="mt-2">Upload a JPK-Force-Map file</h4>
+      <p-fileUpload (uploadHandler)="uploadrawHandler($event)"
+                    mode="basic"
+                    [auto]="true"
+                    [customUpload]="true"
+                    chooseLabel="Upload raw File"
+                    name="myfileRaw[]"
+                    pTooltip="Upload your raw file containing your nano-indentation data"
+                    tooltipPosition="right"></p-fileUpload>
+    </p-accordionTab>
     <!-- Filtering Tab -->
     <p-accordionTab header="Filtering">
       <div style="border: 1px solid #383838; border-radius: 5px; padding: 12px">
@@ -68,6 +79,8 @@
 
         <ng-container *ngFor="let filter of selectedFilters">
 
+
+
           <h4 class="mt-4">{{filter.name}}</h4>
 
           <div *ngFor="let input of filter.inputs">
@@ -80,10 +93,15 @@
                            incrementButtonIcon="pi pi-plus"
                            decrementButtonIcon="pi pi-minus">
             </p-inputNumber>
-
           </div>
-
         </ng-container>
+      </div>
+
+      <div style="border: 1px solid #383838; border-radius: 5px; padding: 12px; margin-top: 12px" >
+        Filter-Select
+        <mat-slider min="1" max="10" step="0.5" value="1.5">
+          <input matSliderThumb>
+        </mat-slider>
       </div>
     </p-accordionTab>
     <!-- Contact Point Tab -->
@@ -91,7 +109,11 @@
       Contact Point
     </p-accordionTab>
     <!-- Other Tab -->
-    <p-accordionTab header="Header 3">
+    <p-accordionTab header="upload custom code">
+      <form>
+        <textarea #pythonCode></textarea>
+        <button type="submit" (click)="runCode(pythonCode.value)">Run</button>
+      </form>
     </p-accordionTab>
   </p-accordion>
 

@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {GraphService} from "../services/graph.service";
 import {TooltipModule} from 'primeng/tooltip';
 
+
+
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
@@ -15,6 +17,8 @@ export class SidenavComponent {
   band: number = null;
   uploadedFile: any = [];
   customerData: any = [];
+  pythonCode: string;
+  output: any;
 
   filters: { id: number, name: string, inputs?: string[] }[] = [
     {id: 1, name: "Median Filter", inputs: ["Window Length [nm]", "Polynomical Order (int)"]},
@@ -34,6 +38,7 @@ export class SidenavComponent {
     this.uploadedFile = event.files;
     console.log(this.uploadedFile)
     this.parseData();
+    
   }
 
   parseData() {
@@ -84,48 +89,31 @@ export class SidenavComponent {
     reader.readAsText(this.uploadedFile[0]);
   }
 
-  /*
-      reader.onload = (e) => {
-          console.log("HERE");
-          // Entire file
-            const text: string = reader.result as string;
-          // $output.innerText = text
+
+  uploadrawHandler(event: any){
+
+    console.log("START UPLOADING")
+    this.uploadedFile = event.files;
+    console.log(this.uploadedFile)
+    this.parseRawData();
+
+  }
+  
+  parseRawData(){
+
+   
+    globalThis.pyodide.runPython('print("testing - This should appear on browser console (ctrl+shft-i)")').then((result)=>{console.log(result);});
+  }
 
 
-          // By lines
-          let lines = text.split('\n');
-          let reached = false;
-          let customerData = {
-              "Time":[],
-              "Load":[],
-              "Indentation":[],
-              "Cantilever":[],
-              "Piezo":[]
-          };
+  runCode(code: string) {
+    globalThis.pyodide.runPython(code).then((result)=>{
+      this.output = result;
+    });
 
-          let values;
-          for (let line = 0; line < lines.length; line++) {
-              if(reached){
-                  //ta.push(lines[line].split("\t"));
-                  values = lines[line].split("\t");
-                  customerData["Time"].push(values[0]);
-                  customerData["Load"].push(values[1]);
-                  customerData["Indentation"].push(values[2]);
-                  customerData["Cantilever"].push(values[3]);
-                  customerData["Piezo"].push(values[4]);
-              }
+  }
 
-              let words = lines[line].split('');
-              for(let word = 0; word<words.length; word++){
 
-                  if(words.slice(-10).join("").trim() === "Auxiliary") {
-                      reached = true;
-                  }
-              }
-          }
+};
+  
 
-          console.log(customerData);
-        }
-    }
-    */
-}

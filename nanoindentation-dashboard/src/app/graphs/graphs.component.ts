@@ -12,6 +12,10 @@ export class GraphsComponent {
   basicOptions;
   basicData;
   data;
+
+  datasets: {id: number, name: string, data: any, labels: any}[] = []
+  selectedDatasets: { id: number, name: string, data: any, label: any}[] =[]
+  
   constructor(private graphService: GraphService) {
     this.graphService.graphData$.subscribe((data) => {
       if (data?.Indentation) {

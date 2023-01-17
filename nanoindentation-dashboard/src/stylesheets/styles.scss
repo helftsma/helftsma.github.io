@@ -45,3 +45,6 @@ body {
 .content {
   width: calc(100% - 300px); /* 240px -> sidenav width  -> using scss variable does not work for calc*/
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
