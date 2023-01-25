@@ -1,15 +1,14 @@
 # import here your procedure-specific modules, no requirements (numpy as an example)
 import numpy as np
 
-
 class CP():  # could be used as superclass
 
     # Set here the details of the procedure
-    def __init__(self):
-        self.name  # Name, please keep it short as it will appear in the combo box of the user interface
-        self.desc  # Free text
-        self.doi  # set a DOI of a publication you want/suggest to be cited, empty if no reference
-        self.dependance = ['para1']  # list of dependant variables that must be set
+    def __init__(self, name, desc, doi, dependance):
+        self.name = name # Name, please keep it short as it will appear in the combo box of the user interface
+        self.desc = desc # Free text
+        self.doi = doi # set a DOI of a publication you want/suggest to be cited, empty if no reference
+        self.dependance = dependance # list of dependant variables that must be set
 
     def setValues(self, values):  # setter for window values
         self.values = values
