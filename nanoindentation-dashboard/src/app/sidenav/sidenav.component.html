@@ -13,7 +13,7 @@
                     pTooltip="Upload your .txt file containing your nano-indentation data"
                     tooltipPosition="right"></p-fileUpload>
     </p-accordionTab>
-    <p-accordionTab header="Files - Raw">
+    <p-accordionTab header="Files - raw">
       <h4 class="mt-2">Upload a JPK-Force-Map file</h4>
       <p-fileUpload (uploadHandler)="uploadrawHandler($event)"
                     mode="basic"
@@ -109,12 +109,10 @@
       Contact Point
     </p-accordionTab>
     <!-- Other Tab -->
-    <p-accordionTab header="Upload Custom Code">
-      <h5>Python Interpreter</h5>
+    <p-accordionTab header="upload custom code">
       <form>
-        
-        <textarea pInputTextarea [rows]="5" [cols]="30" #pythonCode></textarea>
-        <button pButton type="button" label="Run Interpreter" (click)="runCode(pythonCode.value)"></button>
+        <textarea #pythonCode></textarea>
+        <button type="submit" (click)="runCode(pythonCode.value)">Run</button>
       </form>
     </p-accordionTab>
   </p-accordion>

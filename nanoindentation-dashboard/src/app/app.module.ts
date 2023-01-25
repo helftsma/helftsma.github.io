@@ -19,7 +19,6 @@ import {CardModule} from "primeng/card";
 import {ChartModule} from "primeng/chart";
 import {TooltipModule} from 'primeng/tooltip';
 import {MatSliderModule} from '@angular/material/slider';
-import {InputTextareaModule} from 'primeng/inputtextarea';
 
 
 
@@ -44,8 +43,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     CardModule,
     TooltipModule,
     ChartModule, 
-    MatSliderModule,
-    InputTextareaModule
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

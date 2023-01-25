@@ -13,14 +13,15 @@ export class GraphsComponent {
   basicData;
   data;
 
-  datasets: { id: number, name: string, data: any, labels: any }[] = []
-  selectedDatasets: { id: number, name: string, data: any, labels: any }[] = []
-
+  datasets: {id: number, name: string, data: any, labels: any}[] = []
+  selectedDatasets: { id: number, name: string, data: any, label: any}[] =[]
+  
   constructor(private graphService: GraphService) {
     this.graphService.graphData$.subscribe((data) => {
       if (data?.Indentation) {
-        this.datasets.push({id: 1, name: "Dataset1", data: data.Indentation, labels: data.Time})
-        this.reloadChart();
+        this.basicData.datasets[0].data = data.Indentation;
+        this.basicData.labels = data.Time;
+        this.chart.reinit();
       }
     })
   }
@@ -39,12 +40,6 @@ export class GraphsComponent {
         },
       ]
     };
-  }
-
-  reloadChart(): void {
-    this.basicData.datasets[0].data = this.selectedDatasets[0]?.data;
-    this.basicData.labels = this.selectedDatasets[0]?.labels;
-    this.chart.reinit();
   }
 
   applyDarkTheme() {
@@ -76,4 +71,5 @@ export class GraphsComponent {
       }
     };
   }
+
 }
