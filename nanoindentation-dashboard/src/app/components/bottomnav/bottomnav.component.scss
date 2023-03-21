@@ -1,0 +1,13 @@
+@use 'src/stylesheets/variables' as *;
+
+.bottomnav {
+  background: #383838;
+  position: absolute;
+  bottom: 0;
+  left: $sidenav-width;
+  width: calc(100% - #{$sidenav-width});
+}
+
+.p-inputwrapper {
+  height: 30px !important;
+}

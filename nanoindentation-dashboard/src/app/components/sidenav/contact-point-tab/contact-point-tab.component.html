@@ -1,0 +1,14 @@
+<p-accordionTab header="Contact Point" [disabled]="disabled">
+  Contact Point
+
+  <!--  SELECT PROCESS USED -->
+  <p-dropdown [options]="availableCPointProcesses" [(ngModel)]="processorService.selectedCPointProcess"
+              placeholder="Choose Method"
+              optionLabel="name">
+  </p-dropdown>
+
+  <!--  ALL SETTINGS OF SELECTED PROCESS -->
+  <app-process-item *ngIf="processorService.selectedCPointProcess" [process]="processorService.selectedCPointProcess">
+  </app-process-item>
+
+</p-accordionTab>

@@ -1,11 +1,28 @@
-<div class="flex flex-row" style="overflow-x: hidden">
+<div *ngIf="(processorService.loading$|async).length"
+     class="flex justify-content-center align-items-center"
+     style="width: 100vw; height: 100vh">
 
-
-  <app-sidenav>
-
-    
-  </app-sidenav>
-
-  <app-graphs class="w-full h-full"></app-graphs>
+  <!--  SHOWS LOADING INCLUDING STEPS IF PROCESSORSERVICE IS RUNNING PROCESSES-->
+  <div class="flex flex-column justify-content-center align-items-center">
+    <p-progressSpinner></p-progressSpinner>
+    <ng-container *ngFor="let text of processorService.loading$|async">
+      <div class="text-center" [innerHTML]="text">
+      </div>
+    </ng-container>
+  </div>
 
 </div>
+
+<!-- SHOWS DASHBOARD IF NOTHING IS LOADING -->
+<div [class.hidden]="(processorService.loading$|async).length">
+  <div class="flex flex-row" style="overflow-x: hidden">
+
+    <app-sidenav></app-sidenav>
+
+    <app-graphs class="overflow-auto" style="margin-bottom: 97px"></app-graphs>
+
+    <app-bottomnav></app-bottomnav>
+
+  </div>
+</div>
+

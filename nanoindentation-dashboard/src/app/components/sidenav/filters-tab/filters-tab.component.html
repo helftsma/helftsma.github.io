@@ -1,0 +1,12 @@
+<p-accordionTab header="Filtering" [disabled]="disabled">
+
+  <div style="border: 1px solid #383838; border-radius: 5px; padding: 12px; margin-top: 12px">
+    <p-multiSelect [options]="processorService.availableProcesses.filters"
+                   [(ngModel)]="processorService.selectedFilters" optionLabel="name"
+                   defaultLabel="Other Filters"></p-multiSelect>
+
+    <app-process-item *ngFor="let process of processorService.selectedFilters" [process]="process"></app-process-item>
+
+  </div>
+
+</p-accordionTab>

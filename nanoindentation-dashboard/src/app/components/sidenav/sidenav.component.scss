@@ -1,0 +1,27 @@
+@use 'src/stylesheets/variables' as *;
+
+h4 {
+  margin-bottom: 8px;
+}
+
+h5 {
+  margin-bottom: 8px;
+}
+
+:host ::ng-deep .p-dropdown {
+  width: 15.4rem;
+}
+
+.recalculate-container {
+  position: absolute;
+  width: $sidenav-width;
+  background: #383838;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 97px;
+  text-align: center;
+}

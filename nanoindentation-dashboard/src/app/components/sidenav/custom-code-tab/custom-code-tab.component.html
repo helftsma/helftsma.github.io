@@ -1,0 +1,40 @@
+<p-accordionTab header="Upload Custom Code">
+
+  <div style="border: 1px solid #383838; border-radius: 5px; padding: 12px">
+
+    <h4>Upload Custom Python Scripts</h4>
+
+    <!--    LOADING BAR -->
+    <div class="flex flex-column justify-content-center align-items-center" *ngIf="loading">
+      <div style="width: 240px">
+        <p-progressBar [style]="{'height': '6px'}" mode="indeterminate"></p-progressBar>
+      </div>
+      <div class="text-center mt-3" [innerHTML]="'Uploading files...'"></div>
+    </div>
+
+
+    <!--    IF NOT LOADING -->
+    <div [class.hidden]="loading">
+
+      <!--      SELECT PROCESS TYPE OF CUSTOM CODE -->
+      <p-dropdown [options]="processOptions" [(ngModel)]="selectedProcessType" optionLabel="name"></p-dropdown>
+
+      <div class="mt-3">
+
+        <!--        UPLOAD FILE BUTTON -->
+        <p-fileUpload #fileUpload (uploadHandler)="uploadCodeHandler($event)"
+                      mode="basic"
+                      [auto]="true"
+                      [customUpload]="true"
+                      chooseLabel="Upload">
+        </p-fileUpload>
+
+        <!--        MESSAGE IF UPLOAD WAS SUCCESSFUL -->
+        <div class="mt-3" style="color: #81c784">{{uploadSuccessfulMessage}}</div>
+
+      </div>
+    </div>
+
+  </div>
+
+</p-accordionTab>

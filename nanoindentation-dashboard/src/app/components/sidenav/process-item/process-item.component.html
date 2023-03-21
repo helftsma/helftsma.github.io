@@ -1,0 +1,42 @@
+<div class="mt-4 mb-4">
+  <h4 class="mb-2">{{process.name}}</h4>
+
+  <div *ngIf="!process.inputs || process.inputs.length == 0">
+    This Filter has not inputs.
+  </div>
+
+  <!--  FOR EVERY IPUT -->
+  <div *ngFor="let input of process.inputs">
+    <h5 class="mt-2"
+        *ngIf="input.type == EInputFieldType.NUMBER || input.type == EInputFieldType.BOOLEAN || input.type == EInputFieldType.GEOMETRY">{{input.name}}</h5>
+
+    <!--    IF INPUT IS OF TYPE NUMBER -> SHOW NUMBER INPUT -->
+    <p-inputNumber *ngIf="input.type == EInputFieldType.NUMBER"
+                   (onInput)="processorService.showReCalculateButton = true"
+                   [showButtons]="true"
+                   [(ngModel)]="input.selectedValue"
+                   buttonLayout="horizontal"
+                   spinnerMode="horizontal"
+                   decrementButtonClass="p-button-primary"
+                   incrementButtonClass="p-button-primary"
+                   incrementButtonIcon="pi pi-plus"
+                   decrementButtonIcon="pi pi-minus">
+    </p-inputNumber>
+
+    <!--    IF INPUT IS OF TYPE BOOLEAN -> SHOW SWITCH -->
+    <p-inputSwitch *ngIf="input.type == EInputFieldType.BOOLEAN" [(ngModel)]="input.selectedValue"
+                   (onChange)="processorService.showReCalculateButton = true"
+                   class="mr-2">
+    </p-inputSwitch>
+
+    <!--    IF INPUT IS OF TYPE GEOMETRY -> SHOW DROPDOWN OF ALL AVAILABLE GEOMETRIES -->
+    <p-dropdown *ngIf="input.type == EInputFieldType.GEOMETRY"
+                [options]="geometries"
+                (onChange)="processorService.showReCalculateButton = true"
+                [(ngModel)]="input.selectedValue"
+                optionLabel="value">
+    </p-dropdown>
+
+
+  </div>
+</div>

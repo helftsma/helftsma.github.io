@@ -1,0 +1,144 @@
+<div style="padding: 2rem 2rem 0 2rem; display:inline-flex; gap: 20px">
+
+  <!--  FILTERED CURVES -->
+  <div>
+    <h3>Force-Displacement</h3>
+    <!--    MULTIPLE -->
+    <p-chart type="line"
+             width="39vh"
+             height="39vh"
+             #displacementForceFilteredChartMultiple
+             [data]="displacementForceFilteredDataMultiple"
+             [options]="graphOptions1">
+    </p-chart>
+
+
+    <!--    SINGLE -->
+    <p-chart type="line"
+             width="39vh"
+             height="39vh"
+             #displacementForceFilteredChartSingle
+             [data]="displacementForceFilteredDataSingle"
+             [options]="graphOptions2">
+    </p-chart>
+  </div>
+
+  <!-- INDENTATION CUVES -->
+  <div>
+    <h3>Force-Indentation</h3>
+
+    <!--    MULTIPLE -->
+    <p-chart type="line"
+             width="39vh"
+             height="39vh"
+             #indentationForceChartMultiple
+             [data]="indentationForceDataMultiple"
+             [options]="graphOptions3">
+    </p-chart>
+
+    <!-- SINGLE -->
+    <p-chart type="line"
+             width="39vh"
+             height="39vh"
+             #indentationForceChartSingle
+             [data]="indentationForceDataSingle"
+             [options]="graphOptions4">
+    </p-chart>
+  </div>
+
+  <!--  ELASTICITY CURVES -->
+  <div>
+    <h3>Elasticity-Spectra</h3>
+
+    <!--    MULTIPLE -->
+    <p-chart type="line"
+             width="39vh"
+             height="39vh"
+             #elSpectraChartMultiple
+             [data]="elSpectraDataMultiple"
+             [options]="graphOptions5">
+    </p-chart>
+
+    <!--    SINGLE -->
+    <p-chart type="line"
+             width="39vh"
+             height="39vh"
+             #elSpectraChartSingle
+             [data]="elSpectraDataSingle"
+             [options]="graphOptions6">
+    </p-chart>
+  </div>
+
+  <button pButton pRipple type="button" (click) = "showGraphTutorial()" icon = "pi pi-info" class="p-button-rounded p-button-success"></button>
+
+  <!--  BUTTON TO OPEN TUTORIAL -->
+<!--  <button pButton pRipple type="button" (click)="showTutorial()" icon="pi pi-info"-->
+<!--          class="p-button-rounded p-button-success"></button>-->
+
+  <!--  ERROR DIALOG -->
+  <p-dialog header="Error Caught" [(visible)]="errorHandler.dialogShown" [modal]="true" [style]="{width: '50vw'}"
+            [draggable]="false" [resizable]="false">
+    <p class="m-0">{{this.errorHandler.errorMessage}}</p>
+    <ng-template pTemplate="footer">
+      <p-button icon="pi pi-check" (click)="errorHandler.dialogShown=false" label="Ok"
+                styleClass="p-button-text"></p-button>
+    </ng-template>
+  </p-dialog>
+
+  <p-dialog header="Tutorial (Graphs)" [(visible)]="displayGraphTutorial" [modal]="true" [style]="{width: '50vw'}"[draggable]="false" [resizable]="false">
+    <p class="m-0">
+      This service is made up of two parts. The Graphs and the Sidebar. <br><br>
+      Three sets of graphs are displayed, each with a primary and secondary graph.
+      One of these graphs displays Force-Displacement data, one Force-Indentation and the last displays Elasticity-Spectra data. <br><br>
+      The primary graph displays all of the uploaded curves, whearas the secondary graph displays one curve from the set, picked out by a slider on the bottom bar.
+      This is useful if you need to pick out a certain curve to download as a CSV file, or want to examine another curve further.<br><br>
+      For more information on this website, please see the documentation listed on Github...
+    </p>
+    <ng-template pTemplate="footer">
+      <p-button (click)="showGraphTutorial()" label="Previous"styleClass="p-button-text"></p-button>
+      <p-button (click)="showTutorial()" label="Next"styleClass="p-button-text"></p-button>
+    </ng-template>
+  </p-dialog>
+
+  <p-dialog header="Tutorial (Sidebar)" [(visible)]="displayTutorial" [modal]="true" [style]="{width: '50vw'}"[draggable]="false" [resizable]="false">
+    <p class="m-0">
+      1. The first tab is the File Tab. It shows and gives the options to select which uploaded file/s to show in the graphs.<br><br>
+
+      There are also buttons to upload either text or jpk-force-map files which will automatically shown in the graphs as well as in the "Select file to use" box.
+      There is a drop down menu that allows the user to activate filters. Multiple filters can be selected, and they will apply to all graphs.<br><br>
+
+      2. The Filtering tab lets you search and select for the preset filters that can be applied to the uploaded datasets and viewed in the graphs.
+    </p>
+    <ng-template pTemplate="footer">
+      <p-button (click)="showGraphTutorial()" label="Previous"styleClass="p-button-text"></p-button>
+      <p-button (click)="showTutorial2()" label="Next"styleClass="p-button-text"></p-button>
+    </ng-template>
+  </p-dialog>
+
+  <p-dialog header="Tutorial (Sidebar 2)" [(visible)]="displayTutorial2" [modal]="true" [style]="{width: '50vw'}"[draggable]="false" [resizable]="false">
+    <p class="m-0">
+      3. The Contact Point tab defines which contact point calculation method wish to use including an auto range.<br>Contact point is the point at which the cantilever made contact with the surface.<br><br>
+
+      4. The Force-Ind tab is used to control the second set of graphs - the Force-Indentation graphs. <br>The feature is a drop down box which allows the user to select a spring constant from a range.
+      There is also a toggle to choose to set "Zero Force"<br><br>
+
+      5. The Elasticity-Spectra tab is used to control the third set of graphs. The type of Tip geometry can be selected, The user can also choose the settings for the values for "Radius", "Win" and "Order" as well as toggle the option to use "Interpolation".
+    </p>
+    <ng-template pTemplate="footer">
+      <p-button (click)="showTutorial()" label="Previous"styleClass="p-button-text"></p-button>
+      <p-button (click)="showTutorial3()" label="Next"styleClass="p-button-text"></p-button>
+    </ng-template>
+  </p-dialog>
+
+  <p-dialog header="Tutorial (Sidebar 3)" [(visible)]="displayTutorial3" [modal]="true" [style]="{width: '50vw'}"[draggable]="false" [resizable]="false">
+    <p class="m-0">
+      6. The Download Tab is a drop-down feature which allows the user to download the datasets of either the "Force Displacement", "Force Indentation" or "Elasticity Spectra" and choose to either download the entire datasets or a single curve.<br><br>
+      7. The Settings Tab is a drop-down feature which allows the user to download the settings they have selected for the displayed datasets as a text file or to upload their own desired settings<br><br>
+      8. The Upload Code Tab enables the user to upload their own custom filter or CPoint python code file.
+    </p>
+    <ng-template pTemplate="footer">
+      <p-button (click)="showTutorial2()" label="Previous"styleClass="p-button-text"></p-button>
+      <p-button (click)="closeTutorial()" label="Close"styleClass="p-button-text"></p-button>
+    </ng-template>
+  </p-dialog>
+</div>

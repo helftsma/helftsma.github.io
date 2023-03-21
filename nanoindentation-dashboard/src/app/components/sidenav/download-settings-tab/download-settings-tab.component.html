@@ -1,0 +1,24 @@
+<p-accordionTab header="Settings" [disabled]="disabled">
+
+
+  <!--  DOWNLOAD BUTTON -->
+  <div>
+    <button pButton type="button" icon="pi pi-download" label="Download Settings" (click)="downloadSettings()"></button>
+  </div>
+
+  <div class="mt-3">
+
+    <!--    FILEUPLOAD -->
+    <p-fileUpload #fileUpload (uploadHandler)="uploadSettings($event)"
+                  mode="basic"
+                  [auto]="true"
+                  [customUpload]="true"
+                  chooseLabel="Upload Settings">
+    </p-fileUpload>
+
+    <!--    MESSAGE IF UPLOAD OF FILE WAS SUCCESSFUL -->
+    <div class="mt-3" style="color: #81c784">{{uploadSuccessfulMessage}}</div>
+
+  </div>
+
+</p-accordionTab>

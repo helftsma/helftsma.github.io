@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\Sc\Documents\GitLab\PSD_ARC\ese2-main\venv"
+VIRTUAL_ENV="C:\Users\Raphael Nekam\Documents\UNI\nanoindentation-project\ese2-main\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

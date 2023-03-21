@@ -1,0 +1,32 @@
+<div class="bottomnav py-4">
+
+  <div class="flex mx-5">
+
+    <!--     HEADING -->
+    <h3 class="mr-4 white-space-nowrap">
+      Curve Selection
+    </h3>
+
+    <div class="flex justify-content-between w-full">
+
+      <!--      NUMERICAL INPUT FOR SELECTED CURVE -->
+      <p-inputNumber [(ngModel)]="graphService.sliderValue" [showButtons]="true" buttonLayout="horizontal"
+                     inputId="horizontal" spinnerMode="horizontal" [step]="1"
+                     [min]="0" [max]="graphService.selectedDatafile.datasets.length - 1"
+                     incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
+      </p-inputNumber>
+
+      <!--      BUTTON TO RESET ALL GRAPH ZOOMS -->
+      <p-button class="bottom-nav-button" label="Reset all Graph Zooms" icon="pi pi-replay" iconPos="left"
+                (click)="graphService.resetAllGraphZooms = true"></p-button>
+    </div>
+  </div>
+
+  <div class="mx-5">
+    <!--    SLIDER TO SELECT CURVE-->
+    <p-slider [(ngModel)]="graphService.sliderValue" [min]="0"
+              [max]="graphService.selectedDatafile.datasets.length - 1"></p-slider>
+  </div>
+
+
+</div>

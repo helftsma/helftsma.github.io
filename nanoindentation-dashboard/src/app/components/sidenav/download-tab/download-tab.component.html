@@ -1,0 +1,18 @@
+<p-accordionTab header="Download CSV" [disabled]="disabled">
+
+  <!--  SELECT WHICH GRAPH SHOULD BE DOWNLOADED (filtered data, indentation, elspectra, etc) -->
+  <div class="mb-3">
+    <p-dropdown [options]="graphOptions" [(ngModel)]="selectedGraph" optionLabel="name"></p-dropdown>
+  </div>
+
+  <!--      SELECT IF MULTIPLE OR SINGLE DATA WANTED -->
+  <div class="mb-3">
+    <p-dropdown [options]="graphSingle" [(ngModel)]="selectedSingle" optionLabel="name"></p-dropdown>
+  </div>
+
+  <!--    DOWNLOAD BUTTON -->
+  <div>
+    <button pButton type="button" icon="pi pi-download" label="Download" (click)="download()"></button>
+  </div>
+
+</p-accordionTab>
