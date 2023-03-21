@@ -1,0 +1,34 @@
+
+stages:
+  - test
+
+unit-test:
+  image: python:3.8
+  stage: test
+  before_script:
+  - pip install numpy
+  - pip install scipy
+  - pip install pytest
+  script:
+    - python -m pytest --import-mode=append ./nanoindentation-dashboard/src/assets/Processes/
+  cache:
+    key: "$CI_COMMIT_REF_SLUG"
+    paths:
+      - cache/
+
+docker-test:
+  image: marinasjp/ese2:latest
+  stage: test
+  script:
+      - cd nanoindentation-dashboard
+      - npm ci
+      - export CHROME_BIN=/usr/bin/chromium-browser
+      - npm run build
+  cache:
+    paths:
+      -  nanoindentation-dashboard/node_modules/
+  artifacts:
+    expire_in: 1 days
+    when: on_success
+    paths:
+      -  nanoindentation-dashboard/node_modules/
