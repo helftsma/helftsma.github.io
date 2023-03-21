@@ -6,7 +6,7 @@ import {EProcType, Process} from "src/app/models/process.model";
 
 export const environment = {
   production: true,
-  apiURL: 'http://localhost:5000/'
+  apiURL: 'http://nanoindent.pythonanywhere.com'
 };
 
 export const WrittenProcesses: { filters: Process[], cPoints: Process[], eModels: Process[], fModels: Process[], internal: Process[], test: Process[] } = {
